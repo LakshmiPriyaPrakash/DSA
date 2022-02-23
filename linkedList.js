@@ -10,10 +10,32 @@ class LinkedList {
         this.head = null;
     }
 
-    addToHead(value){   //O(1)
+    addToHead(value) {   //O(1)
         const newNode = new Node(value);
         newNode.next = this.head;
         this.head = newNode;
+    }
+
+    addToTail(value) {  //O(n)
+        let newNode = new Node(value);
+        let curr = this.head;
+
+        while(curr.next) {
+            curr = curr.next;
+        }
+
+        curr.next = newNode;
+    }
+
+    printLL() { //O(1)
+        let curr = this.head;
+
+        while(curr) {
+            console.log(curr.value);
+            curr = curr.next;
+        }
+
+        console.log(`\n`);
     }
 }
 
@@ -24,6 +46,8 @@ const node1 = new Node(1, node2);
 
 const ll = new LinkedList();
 ll.head = node1;
+ll.printLL();
 ll.addToHead(0);
-
-console.log(ll)
+ll.printLL();
+ll.addToTail(4);
+ll.printLL()
