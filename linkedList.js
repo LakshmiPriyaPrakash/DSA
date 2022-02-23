@@ -46,6 +46,15 @@ class LinkedList {
         this.tail = newNode;
     }
 
+    removeFromHead(){
+        let curr = this.head;
+        this.head = curr.next;
+        curr.next = null;
+        this.printLL();
+    }
+
+    
+
     printLL() { //O(1)
         let curr = this.head;
 
@@ -77,6 +86,7 @@ ll.printLL();
 ll.addToTailOpt(2);
 ll.addToTailOpt(3);
 ll.printLL();
-ll.addToHead(-2);
 ll.addToHead(-1);
+ll.addToHead(-2);
 ll.printLL();
+ll.removeFromHead();
