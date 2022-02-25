@@ -1,3 +1,18 @@
+function mergeSort(arr){
+    if(arr.length <= 1) return arr;
+
+    let mid = Math.floor(arr.length / 2);
+
+    const leftSort = mergeSort(arr.slice(0, mid));
+
+    const rightSort = mergeSort(arr.slice(mid));
+
+
+    return merge(leftSort, rightSort);
+}
+
+
+
 function merge(arrA, arrB){
     const result = [];
     let i = 0;
@@ -13,20 +28,22 @@ function merge(arrA, arrB){
         }
     }
 
-    if(i < arrA.length) {
-        for(let k = i; k < arrA.length; k++) {
-            result.push(arrA[k])
-        }
+    while(i < arrA.length) {
+        result.push(arrA[i]);
+        i++;
     }
 
-    if(j < arrB.length) {
-        for(let k = i; k < arrB.length; k++) {
-            result.push(arrB[k])
-        }
+    while(j < arrB.length) {
+        result.push(arrB[j]);
+        j++;
     }
 
     return result;
 
 }
 
-console.log(merge([1,10, 12, 15], [2,9,11]));
+console.log(mergeSort([1, 10, 12, 15, 2, 9, 11]));
+//[1, 2, 9, 10, 11, 12, 15]
+console.log(mergeSort([])); // []
+console.log(mergeSort([1])); // [1]
+console.log(mergeSort([5, 1])); //[1, 5]
